@@ -34,13 +34,7 @@ public class PropertiesUtil {
                 throw new ConfigException("No config file founded.");
             }
             properties.load(inputStream);
-            String value = properties.getProperty(key);
-            if(StringUtils.isNotEmpty(value)){
-                return value;
-            }
-            else {
-                throw new ConfigException("The property: " + key + " is not defined.");
-            }
+            return properties.getProperty(key);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
