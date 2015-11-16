@@ -22,7 +22,7 @@ public class PropertiesUtil {
      * Get the value by it`s key from the default config.
      *
      * @param key The value`s key.
-     * @return the value if it is existed else return null.
+     * @return the value if it is existed otherwise null.
      */
     public static String getValue(String key) {
         Properties properties = new Properties();
