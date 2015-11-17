@@ -15,6 +15,7 @@ import java.util.logging.Logger;
  * Created by Sloriac on 15/11/16.
  *
  * The implementation of the interface javax.sql.DataSource.
+ * This class is thread safe.
  */
 public class DataSourcePool implements DataSource {
 
@@ -40,9 +41,9 @@ public class DataSourcePool implements DataSource {
     }
 
     /**
-     * Constructor for DataSourcePool.
+     * Constructor for creating the Singleton instance of this class.
      */
-    public DataSourcePool() {
+    private DataSourcePool() {
         super();
         dataSource = new MySQLDataSource();
         connections = new LinkedList<>();

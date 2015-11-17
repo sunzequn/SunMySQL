@@ -8,6 +8,7 @@ import java.sql.Connection;
  * Created by Sloriac on 15/11/16.
  *
  * Create proxy implementations of JDBC interfaces.
+ * This class is thread safe.
  */
 public class ProxyFactory {
 
@@ -26,9 +27,9 @@ public class ProxyFactory {
     }
 
     /**
-     * Constructor for ProxyFactory subclasses to use.
+     * Constructor for creating the Singleton instance of this class.
      */
-    public ProxyFactory() {
+    private ProxyFactory() {
         super();
     }
 

@@ -14,10 +14,8 @@ public class DataSourcePoolTest {
     @Test
     public void connectionTest(){
 
-        DataSourcePool dataSourcePool = new DataSourcePool();
-
         try {
-            Connection connection = dataSourcePool.instance().getConnection();
+            Connection connection = DataSourcePool.instance().getConnection();
             System.out.println(connection);
             connection.close();
         } catch (SQLException e) {
