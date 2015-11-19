@@ -1,7 +1,9 @@
-package com.sunzequn.sunmysql.annotations.mapper;
+package com.sunzequn.sunmysql.annotations;
 
 import com.sunzequn.sunmysql.annotations.Column;
 import com.sunzequn.sunmysql.annotations.Table;
+import com.sunzequn.sunmysql.annotations.wrapper.Entity;
+import com.sunzequn.sunmysql.annotations.wrapper.Property;
 import com.sunzequn.sunmysql.exception.AnnotationException;
 
 import java.beans.IntrospectionException;
@@ -15,20 +17,20 @@ import java.util.List;
 /**
  * Created by Sloriac on 15/11/18.
  * <p>
- * Get the EntityWrapper of a Entity by resolving it`s annotations.
+ * The class for getting the the wrapper of a entity by resolving it`s annotations.
  */
 public class Mapping<T> {
 
     /**
-     * Get the EntityWrapper of a Entity by resolving it`s annotations.
+     * Get the the wrapper of a entity by resolving it`s annotations.
      *
      * @param t A entity.
-     * @return the EntityWrapper of the Entity.
+     * @return the wrapper of the entity.
      */
-    public EntityWrapper mapping(T t) {
+    public Entity mapping(T t) {
 
-        EntityWrapper entityWrapper = new EntityWrapper();
-        List<PropertyWrapper> propertyWrapperList = new ArrayList<>();
+        Entity entityWrapper = new Entity();
+        List<Property> propertyList = new ArrayList<>();
         Class clazz = t.getClass();
 
         try {
@@ -43,16 +45,16 @@ public class Mapping<T> {
             for (Field field : fields) {
                 if (field.isAnnotationPresent(Column.class)) {
                     Column column = field.getAnnotation(Column.class);
-                    PropertyWrapper propertyWrapper = new PropertyWrapper();
-                    propertyWrapper.setColumn(column.name());
-                    propertyWrapper.setProperty(field.getName());
-                    propertyWrapper.setValue(String.valueOf(getFieldValue(t, field.getName())));
-                    propertyWrapperList.add(propertyWrapper);
+                    Property property = new Property();
+                    property.setColumn(column.name());
+                    property.setProperty(field.getName());
+                    property.setValue(String.valueOf(getFieldValue(t, field.getName())));
+                    propertyList.add(property);
                 }
             }
 
-            if (propertyWrapperList.size() > 0) {
-                entityWrapper.setPropertyWrapperList(propertyWrapperList);
+            if (propertyList.size() > 0) {
+                entityWrapper.setPropertyList(propertyList);
             } else {
                 throw new AnnotationException("The class:" + clazz + " must have fields annotated by @Column.");
             }

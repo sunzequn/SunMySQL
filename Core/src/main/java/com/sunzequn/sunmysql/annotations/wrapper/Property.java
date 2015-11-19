@@ -1,11 +1,11 @@
-package com.sunzequn.sunmysql.annotations.mapper;
+package com.sunzequn.sunmysql.annotations.wrapper;
 
 /**
  * Created by Sloriac on 15/11/18.
  *
  * The wrapper class for a property of a entity (a column of a table).
  */
-public class PropertyWrapper {
+public class Property {
 
     /**
      * The name of a property.
@@ -20,10 +20,10 @@ public class PropertyWrapper {
      */
     private String value;
 
-    public PropertyWrapper() {
+    public Property() {
     }
 
-    public PropertyWrapper(String property, String column, String value) {
+    public Property(String property, String column, String value) {
         this.property = property;
         this.column = column;
         this.value = value;

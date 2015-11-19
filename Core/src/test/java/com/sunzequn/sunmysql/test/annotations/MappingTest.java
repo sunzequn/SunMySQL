@@ -1,6 +1,6 @@
 package com.sunzequn.sunmysql.test.annotations;
 
-import com.sunzequn.sunmysql.annotations.mapper.Mapping;
+import com.sunzequn.sunmysql.annotations.Mapping;
 import org.junit.Test;
 
 /**
