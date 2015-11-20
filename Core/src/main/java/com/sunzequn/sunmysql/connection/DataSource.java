@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * <p>
  * The data source of MySQL, Providing a MySQL connection with the parameters defined in the config file.
  */
-public class MySQLDataSource {
+public class DataSource {
 
     /**
      * The driver name of MySQL. It is a default value.
@@ -31,10 +31,10 @@ public class MySQLDataSource {
 
 
     /**
-     * Constructor for MySQLDataSource.
+     * Constructor for DataSource.
      * It is also initialize a connection of MySQL.
      */
-    public MySQLDataSource() {
+    public DataSource() {
 
         try {
             Class.forName(className);

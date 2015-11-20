@@ -3,7 +3,6 @@ package com.sunzequn.sunmysql.connection;
 import com.sunzequn.sunmysql.proxy.ConnectionInvocationHandler;
 import com.sunzequn.sunmysql.proxy.ProxyFactory;
 
-import javax.sql.DataSource;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -17,7 +16,7 @@ import java.util.logging.Logger;
  * The implementation of the interface javax.sql.DataSource.
  * This class is thread safe.
  */
-public class DataSourcePool implements DataSource {
+public class DataSourcePool implements javax.sql.DataSource {
 
     /**
      * The Singleton instance of this class.
@@ -26,7 +25,7 @@ public class DataSourcePool implements DataSource {
     /**
      * The data source of MySQL.
      */
-    private MySQLDataSource dataSource;
+    private DataSource dataSource;
     /**
      * The pool of connections.
      */
@@ -45,10 +44,10 @@ public class DataSourcePool implements DataSource {
      */
     private DataSourcePool() {
         super();
-        dataSource = new MySQLDataSource();
+        dataSource = new DataSource();
         connections = new LinkedList<>();
         for (int i = 0; i < dataSource.getInitialPoolSize(); i++){
-            connections.add(new MySQLDataSource().getConnection());
+            connections.add(new DataSource().getConnection());
         }
 
     }
