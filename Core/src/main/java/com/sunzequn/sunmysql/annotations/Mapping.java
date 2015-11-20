@@ -24,6 +24,8 @@ public class Mapping<T> {
 
     /**
      * Get the the wrapper of a entity by resolving it`s annotations.
+     * It`s allowable if a property has no annotation
+     * and the property`s name is the default name of it`s corresponding column.
      *
      * @param t A entity.
      * @return the wrapper of the entity.
