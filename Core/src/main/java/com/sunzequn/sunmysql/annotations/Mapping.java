@@ -5,6 +5,7 @@ import com.sunzequn.sunmysql.annotations.Table;
 import com.sunzequn.sunmysql.annotations.wrapper.Entity;
 import com.sunzequn.sunmysql.annotations.wrapper.Property;
 import com.sunzequn.sunmysql.exception.AnnotationException;
+import com.sunzequn.sunmysql.utils.StringUtils;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
@@ -43,14 +44,19 @@ public class Mapping<T> {
 
             Field[] fields = clazz.getDeclaredFields();
             for (Field field : fields) {
+                Property property = new Property();
+                String columnName = null;
                 if (field.isAnnotationPresent(Column.class)) {
                     Column column = field.getAnnotation(Column.class);
-                    Property property = new Property();
-                    property.setColumn(column.name());
-                    property.setProperty(field.getName());
-                    property.setValue(String.valueOf(getFieldValue(t, field.getName())));
-                    propertyList.add(property);
+                    columnName = column.name();
                 }
+                if (StringUtils.isEmpty(columnName)){
+                    columnName = field.getName();
+                }
+                property.setColumn(columnName);
+                property.setProperty(field.getName());
+                property.setValue(String.valueOf(getFieldValue(t, field.getName())));
+                propertyList.add(property);
             }
 
             if (propertyList.size() > 0) {
@@ -67,7 +73,8 @@ public class Mapping<T> {
 
     /**
      * Get the value of a property by it`s name.
-     * @param t The object from which we retrieve values.
+     *
+     * @param t         The object from which we retrieve values.
      * @param fieldName The name of the property.
      * @return the value of the property.
      */
@@ -75,6 +82,10 @@ public class Mapping<T> {
         try {
             PropertyDescriptor propertyDescriptor = new PropertyDescriptor(fieldName, t.getClass());
             Method method = propertyDescriptor.getReadMethod();
+            if (method == null) {
+                throw new RuntimeException("No read method for bean property "
+                        + t.getClass() + " " + fieldName);
+            }
             Object value = method.invoke(t, new Object[]{});
             return value;
         } catch (IntrospectionException e) {
