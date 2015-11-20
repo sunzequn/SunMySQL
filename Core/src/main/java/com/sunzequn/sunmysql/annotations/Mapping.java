@@ -57,7 +57,7 @@ public class Mapping<T> {
                 }
                 property.setColumn(columnName);
                 property.setProperty(field.getName());
-                property.setValue(String.valueOf(getFieldValue(t, field.getName())));
+                property.setValue(getFieldValue(t, field.getName()));
                 propertyList.add(property);
             }
 

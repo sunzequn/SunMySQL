@@ -18,12 +18,12 @@ public class Property {
     /**
      * The value of the property.
      */
-    private String value;
+    private Object value;
 
     public Property() {
     }
 
-    public Property(String property, String column, String value) {
+    public Property(String property, String column, Object value) {
         this.property = property;
         this.column = column;
         this.value = value;
@@ -37,19 +37,19 @@ public class Property {
         this.property = property;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
     public String getColumn() {
         return column;
     }
 
     public void setColumn(String column) {
         this.column = column;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
     }
 }
