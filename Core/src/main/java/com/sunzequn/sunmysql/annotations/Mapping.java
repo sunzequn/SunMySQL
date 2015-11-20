@@ -64,7 +64,7 @@ public class Mapping<T> {
             if (propertyList.size() > 0) {
                 entityWrapper.setPropertyList(propertyList);
             } else {
-                throw new AnnotationException("The class:" + clazz + " must have fields annotated by @Column.");
+                throw new AnnotationException("The class:" + clazz + " must have fields.");
             }
 
         } catch (AnnotationException e) {
