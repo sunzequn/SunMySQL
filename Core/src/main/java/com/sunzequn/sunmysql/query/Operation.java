@@ -1,6 +1,6 @@
 package com.sunzequn.sunmysql.query;
 
-import com.sunzequn.sunmysql.annotations.wrapper.Entity;
+import com.sunzequn.sunmysql.bean.Entity;
 import com.sunzequn.sunmysql.sql.Parser;
 
 /**

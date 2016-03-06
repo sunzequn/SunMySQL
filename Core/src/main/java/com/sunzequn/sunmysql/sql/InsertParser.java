@@ -1,7 +1,7 @@
 package com.sunzequn.sunmysql.sql;
 
-import com.sunzequn.sunmysql.annotations.wrapper.Entity;
-import com.sunzequn.sunmysql.annotations.wrapper.Property;
+import com.sunzequn.sunmysql.bean.Entity;
+import com.sunzequn.sunmysql.bean.Property;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

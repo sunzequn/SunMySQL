@@ -1,7 +1,7 @@
 package com.sunzequn.sunmysql.annotations;
 
-import com.sunzequn.sunmysql.annotations.wrapper.Entity;
-import com.sunzequn.sunmysql.annotations.wrapper.Property;
+import com.sunzequn.sunmysql.bean.Entity;
+import com.sunzequn.sunmysql.bean.Property;
 import com.sunzequn.sunmysql.exception.AnnotationException;
 import com.sunzequn.sunmysql.utils.StringUtil;
 
@@ -86,13 +86,8 @@ public class Mapping<T> {
                 throw new RuntimeException("No read method for bean property "
                         + t.getClass() + " " + fieldName);
             }
-            Object value = method.invoke(t, new Object[]{});
-            return value;
-        } catch (IntrospectionException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+            return method.invoke(t, new Object[]{});
+        } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;

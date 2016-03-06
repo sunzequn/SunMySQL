@@ -1,7 +1,7 @@
 package com.sunzequn.sunmysql.test.sql;
 
 import com.sunzequn.sunmysql.annotations.Mapping;
-import com.sunzequn.sunmysql.annotations.wrapper.Entity;
+import com.sunzequn.sunmysql.bean.Entity;
 import com.sunzequn.sunmysql.sql.InsertParser;
 import com.sunzequn.sunmysql.sql.Parser;
 import com.sunzequn.sunmysql.test.annotations.Person;

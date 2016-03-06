@@ -18,7 +18,7 @@ public class DataSource {
     /**
      * The driver name of MySQL. It is a default value.
      */
-    private static final String className = "com.mysql.jdbc.Driver";
+    private static final String MYSQL_CLASS_NAME = "com.mysql.jdbc.Driver";
 
     /**
      * The number of connections in the data source pool, whose default value is 10.
@@ -35,19 +35,13 @@ public class DataSource {
      * It is also initialize a connection of MySQL.
      */
     public DataSource() {
-
         try {
-            Class.forName(className);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        initValue();
-        try {
+            Class.forName(MYSQL_CLASS_NAME);
+            initValue();
             connection = DriverManager.getConnection(jdbcUrl, user, password);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -64,7 +58,6 @@ public class DataSource {
         if (StringUtil.isNotEmpty(size)) {
             initialPoolSize = Integer.valueOf(size);
         }
-
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.sunzequn.sunmysql.annotations.wrapper;
+package com.sunzequn.sunmysql.bean;
 
 /**
  * Created by Sloriac on 15/11/18.

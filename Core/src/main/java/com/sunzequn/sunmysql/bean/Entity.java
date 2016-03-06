@@ -1,4 +1,4 @@
-package com.sunzequn.sunmysql.annotations.wrapper;
+package com.sunzequn.sunmysql.bean;
 
 import java.util.List;
 
