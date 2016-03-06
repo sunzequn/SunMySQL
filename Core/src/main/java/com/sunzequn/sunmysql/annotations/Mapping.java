@@ -32,14 +32,14 @@ public class Mapping<T> {
      */
     public Entity mapping(T t) {
 
-        Entity entityWrapper = new Entity();
+        Entity entity = new Entity();
         List<Property> propertyList = new ArrayList<>();
         Class clazz = t.getClass();
 
         try {
             if (clazz.isAnnotationPresent(Table.class)) {
                 Table table = (Table) clazz.getAnnotation(Table.class);
-                entityWrapper.setTable(table.name());
+                entity.setTable(table.name());
             } else {
                 throw new AnnotationException("No Table annotation found in the class:" + clazz + ".");
             }
@@ -62,7 +62,7 @@ public class Mapping<T> {
             }
 
             if (propertyList.size() > 0) {
-                entityWrapper.setPropertyList(propertyList);
+                entity.setPropertyList(propertyList);
             } else {
                 throw new AnnotationException("The class:" + clazz + " must have fields.");
             }
@@ -70,7 +70,7 @@ public class Mapping<T> {
         } catch (AnnotationException e) {
             e.printStackTrace();
         }
-        return null;
+        return entity;
     }
 
     /**

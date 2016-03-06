@@ -63,8 +63,10 @@ public class DataSourcePool implements javax.sql.DataSource {
             final Connection connection = connections.pop();
             ConnectionInvocationHandler connHandler = new ConnectionInvocationHandler(connection, connections);
             return ProxyFactory.instance().createConnection(connHandler);
+        } else {
+            throw new SQLException("No connection left.");
         }
-        return null;
+
     }
 
     @Override
