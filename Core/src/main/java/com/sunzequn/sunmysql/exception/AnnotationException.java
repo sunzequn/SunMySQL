@@ -2,7 +2,7 @@ package com.sunzequn.sunmysql.exception;
 
 /**
  * Created by Sloriac on 15/11/18.
- *
+ * <p>
  * Handle exceptions of annotations.
  */
 public class AnnotationException extends Exception {

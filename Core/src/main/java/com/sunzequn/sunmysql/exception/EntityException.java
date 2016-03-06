@@ -2,7 +2,7 @@ package com.sunzequn.sunmysql.exception;
 
 /**
  * Created by Sloriac on 15/11/20.
- *
+ * <p>
  * Handle exceptions of entities.
  */
 public class EntityException extends Exception {

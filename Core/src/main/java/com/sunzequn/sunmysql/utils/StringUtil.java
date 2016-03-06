@@ -5,7 +5,7 @@ package com.sunzequn.sunmysql.utils;
  *
  * The util class for handling strings.
  */
-public class StringUtils {
+public class StringUtil {
 
     /**
      * Determine whether the string is empty.

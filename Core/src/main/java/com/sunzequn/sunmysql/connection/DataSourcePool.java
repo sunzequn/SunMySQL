@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  * Created by Sloriac on 15/11/16.
- *
+ * <p>
  * The implementation of the interface javax.sql.DataSource.
  * This class is thread safe.
  */
@@ -33,9 +33,10 @@ public class DataSourcePool implements javax.sql.DataSource {
 
     /**
      * Returns the Singleton instance of this class.
+     *
      * @return singleton instance
      */
-    public static DataSourcePool instance(){
+    public static DataSourcePool instance() {
         return instance;
     }
 
@@ -46,7 +47,7 @@ public class DataSourcePool implements javax.sql.DataSource {
         super();
         dataSource = new DataSource();
         connections = new LinkedList<>();
-        for (int i = 0; i < dataSource.getInitialPoolSize(); i++){
+        for (int i = 0; i < dataSource.getInitialPoolSize(); i++) {
             connections.add(new DataSource().getConnection());
         }
 
@@ -54,12 +55,13 @@ public class DataSourcePool implements javax.sql.DataSource {
 
     /**
      * Get the proxy of a connection in the pool.
+     *
      * @return the proxy of a connection if the pool is not empty otherwise null;
      * @throws SQLException
      */
     @Override
     public Connection getConnection() throws SQLException {
-        if (connections.size() > 0){
+        if (connections.size() > 0) {
             final Connection connection = connections.pop();
             ConnectionInvocationHandler connHandler = new ConnectionInvocationHandler(connection, connections);
             return ProxyFactory.instance().createConnection(connHandler);

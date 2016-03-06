@@ -16,7 +16,7 @@ public class PropertiesUtil {
     /**
      * The name of the default config file.
      */
-    private static String defaultConfigFile = "config.properties";
+    private static final String DEFAULT_CONF_FILE = "conf.properties";
 
     /**
      * Get the value by it`s key from the default config.
@@ -29,7 +29,7 @@ public class PropertiesUtil {
 
         try {
             ClassLoader classLoader = PropertiesUtil.class.getClassLoader();
-            InputStream inputStream = classLoader.getResourceAsStream(defaultConfigFile);
+            InputStream inputStream = classLoader.getResourceAsStream(DEFAULT_CONF_FILE);
             if (inputStream == null) {
                 throw new ConfigException("No config file founded.");
             }

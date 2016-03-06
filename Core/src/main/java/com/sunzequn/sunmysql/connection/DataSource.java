@@ -2,7 +2,7 @@ package com.sunzequn.sunmysql.connection;
 
 import com.sunzequn.sunmysql.exception.ConfigException;
 import com.sunzequn.sunmysql.utils.PropertiesUtil;
-import com.sunzequn.sunmysql.utils.StringUtils;
+import com.sunzequn.sunmysql.utils.StringUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -61,7 +61,7 @@ public class DataSource {
         password = PropertiesUtil.getValue("password");
         checkParameter("password", password);
         String size = PropertiesUtil.getValue("initialPoolSize");
-        if (StringUtils.isNotEmpty(size)) {
+        if (StringUtil.isNotEmpty(size)) {
             initialPoolSize = Integer.valueOf(size);
         }
 
@@ -73,7 +73,7 @@ public class DataSource {
      * @param parameter The parameter which needs checking.
      */
     public void checkParameter(String parameter, String value) {
-        if (StringUtils.isEmpty(value)) {
+        if (StringUtil.isEmpty(value)) {
             try {
                 throw new ConfigException("The parameter:" + parameter + " is not defined.");
             } catch (ConfigException e) {
@@ -93,6 +93,7 @@ public class DataSource {
 
     /**
      * The getter method of initialPoolSize.
+     *
      * @return the value of initialPoolSize
      */
     public int getInitialPoolSize() {

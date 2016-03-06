@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Created by Sloriac on 15/11/17.
- *
+ * <p>
  * The annotation for the entity,
  * specifying the name of it`s corresponding table.
  */

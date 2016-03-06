@@ -1,11 +1,9 @@
 package com.sunzequn.sunmysql.annotations;
 
-import com.sunzequn.sunmysql.annotations.Column;
-import com.sunzequn.sunmysql.annotations.Table;
 import com.sunzequn.sunmysql.annotations.wrapper.Entity;
 import com.sunzequn.sunmysql.annotations.wrapper.Property;
 import com.sunzequn.sunmysql.exception.AnnotationException;
-import com.sunzequn.sunmysql.utils.StringUtils;
+import com.sunzequn.sunmysql.utils.StringUtil;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
@@ -52,7 +50,7 @@ public class Mapping<T> {
                     Column column = field.getAnnotation(Column.class);
                     columnName = column.name();
                 }
-                if (StringUtils.isEmpty(columnName)){
+                if (StringUtil.isEmpty(columnName)) {
                     columnName = field.getName();
                 }
                 property.setColumn(columnName);
