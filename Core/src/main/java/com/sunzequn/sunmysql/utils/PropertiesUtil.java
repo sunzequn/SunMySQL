@@ -19,6 +19,12 @@ public class PropertiesUtil {
     private static final String DEFAULT_CONF_FILE = "conf.properties";
 
     /**
+     * Don`t let anyone to initialize this class.
+     */
+    private PropertiesUtil() {
+    }
+
+    /**
      * Get the value by it`s key from the default config.
      *
      * @param key The value`s key.

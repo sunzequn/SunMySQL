@@ -20,7 +20,7 @@ public class SQLTest {
 
         Parser resolver = new InsertParser();
 
-        System.out.println(resolver.excute(entity));
+//        System.out.println(resolver.excute(entity));
 
     }
 }

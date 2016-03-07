@@ -46,7 +46,7 @@ public class DataSourcePool implements javax.sql.DataSource {
         super();
         dataSource = new DataSource();
         connections = new LinkedList<>();
-        for (int i = 0; i < dataSource.getInitialPoolSize(); i++) {
+        for (int i = 0; i < Configuration.initialPoolSize; i++) {
             connections.add(new DataSource().getConnection());
         }
 
